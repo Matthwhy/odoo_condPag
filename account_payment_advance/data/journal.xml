@@ -1,0 +1,8 @@
+<odoo>
+
+        <record model="account.journal" id="journal_antecipation">
+            <field name="name">Antecipação de Boletos</field>
+            <field name="type">bank</field>
+        </record>
+
+</odoo>

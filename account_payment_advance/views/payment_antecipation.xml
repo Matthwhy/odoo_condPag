@@ -1,0 +1,83 @@
+<odoo>
+
+    <record model="ir.ui.view" id="view_payment_antecipation_tree">
+        <field name="name">Payment Antecipation Tree</field>
+        <field name="model">payment.antecipation</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Antecipation">
+                <field name="name"/>
+                <field name="payment_date"/>
+                <field name="amount"/>
+                <field name="final_amount"/>
+                <field name="company_id" invisible="1"/>
+                <field name="currency_id" invisible="1" />
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_payment_antecipation_form">
+        <field name="name">Payment Antecipation Form</field>
+        <field name="model">payment.antecipation</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Payment Antecipation">
+                <group>
+                    <group>
+                        <field name="name" required="True"/>
+                        <field name="company_id" required="True" groups="base.group_multi_company"/>
+                        <field name="journal_id" required="1" />
+                        <field name="currency_id" invisible="1" />
+                        <field name="payment_date" required="True"/>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="amount"/>
+                        <field name="desagio" />
+                        <field name="ad_valorem" />
+                        <field name="fees" />
+                        <field name="taxes" />
+                        <field name="retention" />
+                        <field name="final_amount" />
+                    </group>
+                </group>
+                <group>
+                    <field name="antecipation_line_ids">
+                        <tree>
+                            <field name="name" required="True"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="account_id" readonly="1"/>
+                            <field name="amount_residual" readonly="1" sum="Total"/>
+                            <field name="date_maturity"/>
+                            <field name="move_id" readonly="1"/>
+                            <field name="reconciled" string="Pago"/>
+                        </tree>
+                    </field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_payment_antecipation">
+        <field name="name">Payment Antecipation</field>
+        <field name="res_model">payment.antecipation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.menu" id="menu_receivables">
+        <field name="name">Receber e Pagar</field>
+        <field name="parent_id" ref="account.menu_finance"/>
+    </record>
+
+    <record model="ir.ui.menu" id="menu_payment_antecipation">
+        <field name="name">Antecipação de Boletos</field>
+        <field name="parent_id" ref="menu_receivables"/>
+        <field name="action" ref="action_payment_antecipation"/>
+    </record>
+
+    <record model="ir.ui.menu" id="l10n_br_account.menu_br_payments">
+        <field name="parent_id" ref="menu_receivables"/>
+    </record>
+
+</odoo>
+
+

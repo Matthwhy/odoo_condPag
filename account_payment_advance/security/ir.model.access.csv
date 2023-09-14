@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_create,perm_write,perm_unlink
+rule_payment_antecipation_user,Payment Antecipation (User),model_payment_antecipation,base.group_user,1,0,0,0
+rule_payment_antecipation_manager,Payment Antecipation (Manager),model_payment_antecipation,account.group_account_invoice,1,1,1,1
+rule_payment_antecipation_line_manager,Payment Antecipation Line (Manager),model_payment_antecipation_line,account.group_account_invoice,1,1,1,1
+access_payment_antecipation_line,access_payment_antecipation_line,model_payment_antecipation_line,base.group_user,1,0,0,0
+access_payment_antecipation_wizard,access_payment_antecipation_wizard,model_payment_antecipation_wizard,base.group_user,1,1,1,1

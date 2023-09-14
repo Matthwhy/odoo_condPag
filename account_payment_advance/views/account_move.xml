@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_open_payment_advance_action" model="ir.actions.act_window">
+        <field name="name">Criar antecipação de boletos</field>
+        <field name="res_model">payment.antecipation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="account.model_account_move_line"/>
+        <field name="binding_view_types">list</field>
+        <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+    <record id="view_move_line_form" model="ir.ui.view">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="l10n_br_account.view_receivable_payable_lines"/>
+        <field name="arch" type="xml">
+            <field name="amount_residual" position="after">
+                <field name="payment_antecipation_id"/>
+                <field name="to_pay_journal_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

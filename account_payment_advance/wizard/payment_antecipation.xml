@@ -1,0 +1,35 @@
+<odoo>
+
+    <record model="ir.ui.view" id="view_payment_antecipation_wizard_form">
+        <field name="name">Payment Antecipation Form</field>
+        <field name="model">payment.antecipation.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Payment Antecipation">
+                <group>
+                    <field name="name" required="True"/>
+                    <field name="company_id" required="True" groups="base.group_multi_company"/>
+                    <field name="journal_id" required="1" />
+                    <field name="expense_account_id" required="1" />
+                    <field name="currency_id" invisible="1" />
+                    <field name="payment_date" required="True"/>
+                    <field name="amount" required="True" force_save="1"/>
+                    <field name="desagio" />
+                    <field name="ad_valorem" />
+                    <field name="fees" />
+                    <field name="taxes" />
+                    <field name="retention" />
+                    <field name="final_amount" />
+                    <field name="description"/>
+                </group>
+                <footer>
+                    <button name="create_payment_antecipation"
+                        string="Criar Antecipação" type="object"
+                        class="oe_highlight" />
+                    <button string="Cancelar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
